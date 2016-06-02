@@ -1,0 +1,7 @@
+{
+    "name": "DestinyWeekly",
+    "description": "Desktop app to show the Weekly Reset from Destiny world.",
+    "version": "0.0.1",
+    "author": "Pedro Costa Neves <neo.nyow@gmail.com>",
+    "main": "main.js"
+}

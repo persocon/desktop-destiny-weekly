@@ -1,12 +1,27 @@
 {
-  "name"    : "desktop-destiny-weekly",
-  "productName" : "DestinyWeekly",
-  "version" : "0.1.0",
-  "main"    : "main.js",
+  "name": "desktop-destiny-weekly",
+  "productName": "DestinyWeekly",
+  "version": "0.1.0",
+  "main": "main.js",
+  "scripts": {
+    "postinstall": "install-app-deps",
+    "start": "electron ./app --enable-logging",
+    "dev": "NODE_ENV='development' npm run start",
+    "dist": "npm run dist:osx && npm run dist:win64",
+    "dist:osx": "build --platform darwin",
+    "dist:win64": "build --platform win32 --arch x64"
+  },
+  "build": {
+    "app-bundle-id": "persocon.destinyweekly",
+    "app-category-type": "public.app-category.game",
+    "iconUrl": "http://reset.tkrp.net/traveler.ico"
+  },
   "dependencies": {
     "electron-prebuilt": "^1.2.0"
   },
   "devDependencies": {
+    "electron-builder": "^3.25.0",
+    "electron-packager": "^7.0.3",
     "electron-prebuilt": "^1.2.0"
   }
 }
