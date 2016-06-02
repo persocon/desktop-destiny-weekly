@@ -4,12 +4,18 @@
   "version": "0.1.0",
   "main": "main.js",
   "scripts": {
-    "postinstall": "install-app-deps",
-    "start": "electron ./app --enable-logging",
-    "dev": "NODE_ENV='development' npm run start",
-    "dist": "npm run dist:osx && npm run dist:win64",
-    "dist:osx": "build --platform darwin",
-    "dist:win64": "build --platform win32 --arch x64"
+    "pack": "npm run pack:osx && npm run pack:win",
+    "pack:osx": "build --platform darwin",
+    "pack:win": "build --platform win32 --arch x64",
+    "dist": "npm run dist:osx && npm run dist:win",
+    "dist:osx": "npm run pack:osx -- -d",
+    "dist:win": "npm run pack:win -- -d",
+    "prerelease:osx": "rm -rf release/osx && mkdir release/osx",
+    "release:osx": "cp -rv dist/DestinyWeekly-darwin-x64/*.{dmg,zip} release/osx && PACKAGE_VERSION=$(cat app/package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && echo $PACKAGE_VERSION >> ./release/osx/VERSION",
+    "prerelease:win64": "rm -rf release/win64 && mkdir release/win64",
+    "release:win64": "cp -v dist/win/{RELEASES,*.nupkg,*.exe} release/win64",
+    "release": "npm run release:osx && npm run release:win64",
+    "all": "npm run dist && npm run release"
   },
   "build": {
     "app-bundle-id": "persocon.destinyweekly",

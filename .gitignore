@@ -1,4 +1,7 @@
+.DS_Store
 node_modules
 dist/DestinyWeekly-darwin-x64
 dist/win
 dist/win-unpacked
+release/osx
+release/win64
