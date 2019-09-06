@@ -1,3 +1,5 @@
+# 🚨DEPRECATED 🚨
+
 # desktop-destiny-weekly
 Desktop version of Destiny Weekly
 
